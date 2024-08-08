@@ -1,27 +1,17 @@
-<page>
-    <actionBar title="Home" />
-    <gridLayout>
-        <label class="info">
-            <formattedString>
-                <span class="fas" text="&#xf135;" />
-                <span text=" {message}" />
-            </formattedString>
-        </label>
-    </gridLayout>
-</page>
+<script>
+  import { Page, ActionBar, StackLayout, Button } from '@nativescript/core';
+  import { navigate } from 'svelte-native';
 
-<script lang="ts">
-    let message: string = "Blank Svelte Native App"
+  function goToPage(page) {
+    navigate(page);
+  }
 </script>
 
-<style>
-    .info .fas {
-        color: #3A53FF;
-    }
-
-    .info {
-        font-size: 20;
-        horizontal-align: center;
-        vertical-align: center;
-    }
-</style>
+<Page>
+  <ActionBar title="Home" />
+  <StackLayout>
+    <Button text="GPS Coordinates" on:tap={() => goToPage('gps')} />
+    <Button text="Device Info" on:tap={() => goToPage('device-info')} />
+    <Button text="Camera" on:tap={() => goToPage('camera')} />
+  </StackLayout>
+</Page>
